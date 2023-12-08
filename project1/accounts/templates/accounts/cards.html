@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Bank</title>
+</head>
+<body>
+    <h2>Your Cards</h2>
+
+    <ul>
+    {% for c in cards %}
+        <li>
+            {{c.card_number}}
+        </li>
+    {% endfor %}
+    </ul>
+
+    <form action='/' method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Frontpage"/>
+    </form>
+</body>
+</html>

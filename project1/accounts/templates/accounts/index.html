@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Bank</title>
+</head>
+<body>
+    <h1>Welcome to your online bank!</h1>
+
+    <form action='accounts/' method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Accounts"/>
+    </form>
+
+    <form action='cards/' method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Cards"/>
+    </form>
+
+    <form action='message/' method="POST">
+        <!-- {% csrf_token %} -->
+        <label for="message">Send a message to your bank:</label>
+        <input type="text" name="message">
+        <input type="submit" value="Send a message"/>
+    </form>
+
+    <form action='logout/' method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Logout"/>
+    </form>
+</body>
+</html>

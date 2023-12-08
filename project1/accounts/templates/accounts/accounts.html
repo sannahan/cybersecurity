@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Bank</title>
+</head>
+<body>
+    {% if error_message %}
+        <p>{{ error_message }}</p>
+    {% endif %}
+
+    <h2>Your IBAN Accounts</h2>
+
+    <ul>
+    {% for a in accounts %}
+        <li>
+            {{a.iban}} ({{a.description}}): {{a.balance}} €
+        </li>
+    {% endfor %}
+    </ul>
+
+    <h2>Make A Bank Transfer</h2>
+
+    <form action="/transfer/" method="POST">
+        {% csrf_token %}
+        <label for="sourceAccount">Source Account:</label>
+        <select name="sourceAccount" id="sourceAccount">
+            {% for a in accounts %}
+                <option value="{{a.iban}}">{{a.iban}} ({{a.description}})</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="destinationAccount">Destination Account:</label>
+        <input type="text" name="destinationAccount" placeholder="FIXXXXXX">
+        <br>
+        <label for="amount">Amount (€):</label>
+        <input type="number" name="amount" placeholder="Amount in €">
+        <input type="submit" value="Transfer">
+    </form>
+
+    <form action='/' method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Frontpage"/>
+    </form>
+</body>
+</html>
